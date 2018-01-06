@@ -63,8 +63,7 @@ def post_steam_app_to_discord(steam_app):
         message = "本日のゲーム: {}, {}".format(steam_app.name, steam_app.URL())
 
     client = SendMessageClient(
-        token=discord_token,
         channel=discord_channel,
         message=message
     )
-    client.run()
+    client.run(discord_token)

@@ -7,12 +7,10 @@ class SendMessageClient(discord.Client):
     this client sends a text message only once to discord channel
     and logout immediately
     """
-    def __init__(self, token, channel, message):
+    def __init__(self, channel, message):
         super().__init__()
-        self.token = token
         self.channel = channel
         self.message = message
-        self.loop = asyncio.get_event_loop()
 
     async def on_ready(self):
         try:
@@ -22,5 +20,5 @@ class SendMessageClient(discord.Client):
         finally:
             await self.logout()
 
-    def run(self):
-        self.loop.run_until_complete(self.start(self.token))
+    def run(self, token):
+        super().run(token)
